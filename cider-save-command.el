@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
 (defcustom cider-saved-commands '((1 "(println \"test-cmd2\")"))
-     "Foo's doc."
+  "The list of currently saved commands."
      :type  '(alist :value-type (integer string))
      :group 'convenience)
 
@@ -16,8 +16,7 @@
   (cider-interactive-eval
    (concat "`" (cider-last-sexp))
    (lambda (value) (when (nrepl-dict-get value "value") (set-command-in-cider-saved-commands command-num (nrepl-dict-get value "value"))))
-   nil
-   (cider--nrepl-pr-request-map)))
+   nil))
 
 
 
@@ -28,8 +27,7 @@
   (cider-interactive-eval
    (cider-get-saved-command command-num)
    nil
-   nil
-   (cider--nrepl-pr-request-map)))
+   nil))
   
 
 (mapcar
